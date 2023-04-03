@@ -19,7 +19,11 @@ app.use(
 );
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://lifeofabblogs.onrender.com/"],
+    origin: [
+      "http://localhost:3000",
+      "https://lifeofabblogss.onrender.com",
+      "https://ofyourchoice.net",
+    ],
   })
 );
 
