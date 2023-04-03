@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.img {
+  display: grid;
+  object-fit: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.imgg {
+  display: list-item;
+  padding: 20px;
+  object-fit: cover;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slick-slide {
+  padding: 0 20px !important;
+}
+.arrow-btn {
+  top: 50%;
+  z-index: 2;
+}
+
+.next {
+  float: right;
+  /* position: absolute; */
+  /* left: 92%; */
+}
+.slider-arrow {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+}
+.gh-canvas {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gap), auto) [wide-start] minmax(
+      auto,
+      calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2)
+    )
+    [main-start] min(var(--content-width, 720px), calc(100% - var(--gap) * 2))
+    [main-end] minmax(
+      auto,
+      calc((var(--container-width, 1200px) - var(--content-width, 720px)) / 2)
+    )
+    [wide-end] minmax(var(--gap), auto) [full-end];
+}
+.dropzone {
+  width: 100%;
+  height: 20%;
+  border: 1px solid black;
+}
+.file-upload {
+  text-align: center;
+  border: 3px dashed rgb(210, 227, 244);
+  padding: 1.5rem;
+  position: relative;
+  cursor: pointer;
+}
+.file-upload p {
+  font-size: 0.87rem;
+  margin-top: 10px;
+  color: #bbcada;
+}
+.file-upload input {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9f3fe;
+}
+.parent {
+  width: 450px;
+  margin: auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 25px;
+  box-shadow: 7px 20px 20px rgb(210, 227, 244);
+}

@@ -1,0 +1,3 @@
+export const NEWS_API_REQUEST = "NEWS_API_REQUEST";
+export const NEWS_API_SUCCESS = "NEWS_API_SUCCESS";
+export const NEWS_API_FAIL = "NEWS_API_FAIL";
