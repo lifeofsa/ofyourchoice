@@ -3,7 +3,6 @@ const User = require("../models/userModel");
 const cloudinary = require("../extras/cloudinary");
 const asyncHandler = require("express-async-handler");
 const Extra = require("../models/extrasModel");
-const { Buffer } = require("node:buffer");
 const pl = require("../routes/uploadRoutes");
 const upload = require("../routes/uploadRoutes");
 
