@@ -22,4 +22,5 @@ const scheduleTask = () => {
 };
 
 // Start scheduling the task
+scheduleTask();
 module.exports = { scheduleTask };
