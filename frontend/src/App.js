@@ -33,14 +33,17 @@ import BlogFormScreen from "./screens/BlogFormScreen";
 import SingleBlogScreen from "./screens/SingleBlogScreen";
 import DomesticNewsScreen from "./screens/DomesticNewsScreen";
 import ViewEditDeleteBlogs from "./screens/ViewEditDeleteBlogs";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 
 export const URL = process.env.REACT_APP_API_URL;
 const App = () => {
   console.log(process.env.REACT_APP_API_URL);
   return (
     // <React.Fragment>
+
     <BrowserRouter>
       <Navbar />
+
       <Routes>
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
@@ -53,6 +56,7 @@ const App = () => {
         <Route path="/bloglist" element={<ViewEditDeleteBlogs />} />
       </Routes>
     </BrowserRouter>
+
     // </React.Fragment>
   );
 };

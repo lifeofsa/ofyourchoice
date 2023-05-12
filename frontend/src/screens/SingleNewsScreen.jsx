@@ -17,6 +17,7 @@ import { newsApiAction } from "../actions/newsActions";
 import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import { Helmet } from "react-helmet-async";
 const SingleNewsScreen = () => {
   const match = useParams();
   const [newsArray, setNewsArray] = useState([]);
@@ -65,6 +66,14 @@ const SingleNewsScreen = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{found2 ? found2?.title : "Of Your Choice"}</title>
+        <meta name="description" content={found2?.description} />
+      </Helmet>
+      <Helmet>
+        <title>{found ? found?.title : "Of Your Choice"}</title>
+        <meta name="description" content={found?.description} />
+      </Helmet>
       {found ? (
         <Stack py={50} align="center">
           <Center>
@@ -86,16 +95,18 @@ const SingleNewsScreen = () => {
         </Stack>
       ) : (
         found2 && (
-          <Stack py={50} align="center">
-            <Heading textAlign="center">{found2.title}</Heading>
-            <Box position="relative">
-              <Image className="imgg" src={found2.image} />
-              <Container maxW={750}>
-                <Text>{found2.description}</Text>
-                <Text>{found2.content}</Text>
-              </Container>
-            </Box>
-          </Stack>
+          <>
+            <Stack py={50} align="center">
+              <Heading textAlign="center">{found2.title}</Heading>
+              <Box position="relative">
+                <Image className="imgg" src={found2.image} />
+                <Container maxW={750}>
+                  <Text>{found2.description}</Text>
+                  <Text>{found2.content}</Text>
+                </Container>
+              </Box>
+            </Stack>
+          </>
         )
       )}
     </div>

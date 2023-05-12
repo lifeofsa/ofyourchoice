@@ -33,6 +33,7 @@ import { fetchTech, newsApiAction } from "../actions/newsActions";
 import GridComponent from "../components/Grid";
 import dayjs from "dayjs";
 import NewsCard from "../components/Grid";
+import { Helmet } from "react-helmet-async";
 
 const TopNewsScreen = () => {
   const news_api = useSelector((state) => state.newsApi);
@@ -48,6 +49,7 @@ const TopNewsScreen = () => {
     );
     setImage(data.data.articles.map((data) => data.image));
   };
+  console.log("asdasds");
   useEffect(() => {
     fetchData();
   }, []);
@@ -63,6 +65,15 @@ const TopNewsScreen = () => {
   return (
     <>
       <>
+        <Helmet>
+          <title>Domestic News</title>
+          <meta name="description" content="Global news today" />
+          <meta
+            name="keywords"
+            content="World news, latest content, USA, CNN, USTV, US News, News Today, whats news today?"
+          />
+        </Helmet>
+
         {news ? (
           <Stack display={{ base: "none", md: "flex" }}>
             <Box style={{ margin: "30px" }}>
@@ -97,7 +108,11 @@ const TopNewsScreen = () => {
                       position: "relative",
                     }}
                   >
-                    <Image className="img" src={image[0]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[0]}
+                      alt="sorry cant load image"
+                    />
                   </Box>
 
                   <GridItem
@@ -107,7 +122,11 @@ const TopNewsScreen = () => {
                     gridColumnEnd={9}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[1]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[1]}
+                      alt="sorry cant load image"
+                    />
                   </GridItem>
 
                   <GridItem
@@ -117,7 +136,11 @@ const TopNewsScreen = () => {
                     gridColumnEnd={7}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[2]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[2]}
+                      alt="sorry cant load image"
+                    />
                   </GridItem>
                   <GridItem
                     gridRowEnd={9}
@@ -126,7 +149,11 @@ const TopNewsScreen = () => {
                     gridColumnEnd={9}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[3]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[3]}
+                      alt="sorry cant load image"
+                    />
                   </GridItem>
                 </Grid>
               </Skeleton>
@@ -170,7 +197,11 @@ const TopNewsScreen = () => {
                   position: "relative",
                 }}
               >
-                <Image className="img" src={image[0]} alt="" />
+                <Image
+                  className="img"
+                  src={image[0]}
+                  alt="sorry cant load image"
+                />
               </Box>
               <GridItem
                 gridRowEnd={10}
@@ -179,7 +210,11 @@ const TopNewsScreen = () => {
                 gridColumnEnd={9}
                 style={{ position: "relative" }}
               >
-                <Image className="img" src={image[1]} alt="" />
+                <Image
+                  className="img"
+                  src={image[1]}
+                  alt="sorry cant load image"
+                />
               </GridItem>
 
               <GridItem
@@ -189,7 +224,11 @@ const TopNewsScreen = () => {
                 gridColumnEnd={9}
                 style={{ position: "relative" }}
               >
-                <Image className="img" src={image[2]} alt="" />
+                <Image
+                  className="img"
+                  src={image[2]}
+                  alt="sorry cant load image"
+                />
               </GridItem>
               <GridItem
                 gridRowEnd={20}
@@ -198,7 +237,11 @@ const TopNewsScreen = () => {
                 gridColumnEnd={9}
                 style={{ position: "relative" }}
               >
-                <Image className="img" src={image[3]} alt="" />
+                <Image
+                  className="img"
+                  src={image[3]}
+                  alt="sorry cant load image"
+                />
               </GridItem>
             </Grid>
             <Stack py={20}>
@@ -222,7 +265,11 @@ const TopNewsScreen = () => {
                               </a>
                             </Center>
                             <a href={`/news/${id}`}>
-                              <Image py={5} src={item.image} />
+                              <Image
+                                py={5}
+                                src={item.image}
+                                alt="sorry can't load image"
+                              />
                             </a>
                             <Text> {item.description} </Text>
                           </CardBody>

@@ -42,6 +42,7 @@ import {
 } from "../constants/BlogsConstants";
 import { blogsActionPost, getAllBlogsAction } from "../actions/blogsAction";
 import dayjs from "dayjs";
+import { Helmet } from "react-helmet-async";
 const BlogScreen = () => {
   const [slider, setSlider] = useState(null);
   const [slider2, setSlider2] = useState(null);
@@ -208,7 +209,7 @@ const BlogScreen = () => {
                           objectFit="cover"
                           fit="cover"
                           src={blog.image}
-                          alt="Dan Abramov"
+                          alt="Sorry can't load Image"
                         />
                       </Flex>
 
@@ -234,7 +235,7 @@ const BlogScreen = () => {
                     objectFit="cover"
                     fit="cover"
                     src={img.src}
-                    alt="Dan Abramov"
+                    alt="Sorry can't load Image"
                   />
                 </Flex>
 
@@ -251,9 +252,16 @@ const BlogScreen = () => {
         </Box>
         {blogs?.map((blog) => (
           <>
+            <Helmet>
+              <title>Of Your Choice | Latest Blogs</title>
+              <meta
+                name="description"
+                content="latest blogs and latest news ofyourchoice"
+              />
+            </Helmet>
             <Stack display="grid" justifyItems="center">
               <a href={`/blognews/${blog?.id}`}>
-                <Image src={blog.image} />
+                <Image src={blog.image} alt="Sorry can't load Image" />
               </a>
 
               <Flex py={10}>
@@ -271,7 +279,14 @@ const BlogScreen = () => {
         ))}
       </Stack>
 
-      <Stack display={{ lg: "none" }} py={20} style={{ margin: "auto" }}>
+      <Stack display={{ lg: "none" }} py={10} style={{ margin: "auto" }}>
+        {userInfo?.admin && (
+          <Stack>
+            <WrapItem py="40px" alignSelf="center">
+              <Button onClick={postHandler}>Create A Blog</Button>
+            </WrapItem>
+          </Stack>
+        )}
         <Box position={"relative"} height={"600px"}>
           {renderArrow2(useColorModeValue("white", "#2d3748"))}
           {loading ? (
@@ -289,7 +304,7 @@ const BlogScreen = () => {
                           objectFit="cover"
                           fit="cover"
                           src={blog.image}
-                          alt="Dan Abramov"
+                          alt="Sorry can't load Image"
                         />
                       </Flex>
 
@@ -319,7 +334,7 @@ const BlogScreen = () => {
               justifyItems="center"
             >
               <a href={`/blognews/${blog?.id}`}>
-                <Image src={blog.image} />
+                <Image src={blog.image} alt="Sorry can't load Image" />
               </a>
 
               <Flex py={10}>

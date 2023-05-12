@@ -33,6 +33,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchTech, newsApiAction } from "../actions/newsActions";
 import GridComponent from "../components/Grid";
 import dayjs from "dayjs";
+import { Helmet } from "react-helmet-async";
 const DomesticNewsScreen = () => {
   const news_api = useSelector((state) => state.newsApi);
   const { news, loading, error } = news_api;
@@ -63,6 +64,14 @@ const DomesticNewsScreen = () => {
   return (
     <>
       <>
+        <Helmet>
+          <title>Domestic News</title>
+          <meta name="description" content="Explore local domestic news" />
+          <meta
+            name="keywords"
+            content="Pakistan news, local news, Karachi, Islamabad, geo news, ary news, express news"
+          />
+        </Helmet>
         {data.length !== 0 ? (
           <>
             <Stack display={{ base: "none", md: "flex" }}>
@@ -89,7 +98,11 @@ const DomesticNewsScreen = () => {
                         position: "relative",
                       }}
                     >
-                      <Image className="img" src={image[0]} alt="" />
+                      <Image
+                        className="img"
+                        src={image[0]}
+                        alt="Sorry can't load Image"
+                      />
                     </Box>
 
                     <GridItem
@@ -99,7 +112,11 @@ const DomesticNewsScreen = () => {
                       gridColumnEnd={9}
                       style={{ position: "relative" }}
                     >
-                      <Image className="img" src={image[1]} alt="" />
+                      <Image
+                        className="img"
+                        src={image[1]}
+                        alt="Sorry can't load Image"
+                      />
                     </GridItem>
 
                     <GridItem
@@ -109,7 +126,11 @@ const DomesticNewsScreen = () => {
                       gridColumnEnd={7}
                       style={{ position: "relative" }}
                     >
-                      <Image className="img" src={image[2]} alt="" />
+                      <Image
+                        className="img"
+                        src={image[2]}
+                        alt="Sorry can't load Image"
+                      />
                     </GridItem>
                     <GridItem
                       gridRowEnd={9}
@@ -118,7 +139,11 @@ const DomesticNewsScreen = () => {
                       gridColumnEnd={9}
                       style={{ position: "relative" }}
                     >
-                      <Image className="img" src={image[3]} alt="" />
+                      <Image
+                        className="img"
+                        src={image[3]}
+                        alt="Sorry can't load Image"
+                      />
                     </GridItem>
                   </Grid>
                 </Skeleton>
@@ -185,7 +210,11 @@ const DomesticNewsScreen = () => {
                       position: "relative",
                     }}
                   >
-                    <Image className="img" src={image[0]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[0]}
+                      alt="Sorry can't load Image"
+                    />
                   </Box>
                   <GridItem
                     gridRowEnd={10}
@@ -194,7 +223,11 @@ const DomesticNewsScreen = () => {
                     gridColumnEnd={9}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[1]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[1]}
+                      alt="Sorry can't load Image"
+                    />
                   </GridItem>
 
                   <GridItem
@@ -204,7 +237,11 @@ const DomesticNewsScreen = () => {
                     gridColumnEnd={9}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[2]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[2]}
+                      alt="Sorry can't load Image"
+                    />
                   </GridItem>
                   <GridItem
                     gridRowEnd={20}
@@ -213,7 +250,11 @@ const DomesticNewsScreen = () => {
                     gridColumnEnd={9}
                     style={{ position: "relative" }}
                   >
-                    <Image className="img" src={image[3]} alt="" />
+                    <Image
+                      className="img"
+                      src={image[3]}
+                      alt="Sorry can't load Image"
+                    />
                   </GridItem>
                 </Grid>
                 <Stack py={20}>
@@ -242,7 +283,11 @@ const DomesticNewsScreen = () => {
                                   </a>
                                 </Center>
                                 <a href={`/news/${id}`}>
-                                  <Image py={5} src={item.image} />
+                                  <Image
+                                    py={5}
+                                    src={item.image}
+                                    alt="Sorry can't load Image"
+                                  />
                                 </a>
                                 <Text> {item.description} </Text>
                               </CardBody>

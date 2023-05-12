@@ -10,15 +10,32 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { HelmetProvider, Helmet } from "react-helmet-async";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <ChakraProvider>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ChakraProvider>
+    <React.StrictMode>
+      <HelmetProvider>
+        <ChakraProvider>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+          <Provider store={store}>
+            <Helmet>
+              <title>Of Your Choice</title>
+              <meta
+                name="description"
+                content="Explore latest blogs and content"
+              />
+              <meta
+                name="keywords"
+                content="blogs,news,latest,blogs,latest,news,global,news,local news,domestic news,ofyourchoice,of your choice"
+              />
+            </Helmet>
+            <App />
+          </Provider>
+        </ChakraProvider>
+      </HelmetProvider>
+    </React.StrictMode>
   </>
 );
 

@@ -58,6 +58,7 @@ import { getBlogExtrabyIdReducer } from "../reducers/blogsReducer";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Error, Message } from "../components/Message";
 import EditExtraofBlog from "./EditExtraofBlog";
+import { Helmet } from "react-helmet-async";
 const BlogFormScreen = () => {
   const [title, setTitle] = useState("");
   const [subHeadingImage, setSubHeadingImage] = useState();
@@ -246,6 +247,10 @@ const BlogFormScreen = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Add a Blog</title>
+        <meta name="description" content="Add your blog" />
+      </Helmet>
       <Box
         borderWidth="1px"
         rounded="lg"
@@ -317,7 +322,6 @@ const BlogFormScreen = () => {
                 </FormControl> */}
                 {addField.length !== 0 && blog?.extra.length !== 0 && (
                   <Button
-                    isDisabled={addField.length == 4}
                     onClick={(e) => {
                       AddSubheading(e);
                     }}

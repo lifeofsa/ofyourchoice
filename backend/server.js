@@ -7,6 +7,7 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { scheduleTask } = require("./utils/serverRecuring");
 require("./middlewares/auth");
 require("./models/index");
 const app = express();
@@ -45,5 +46,6 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(
   PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`),
+  scheduleTask()
 );

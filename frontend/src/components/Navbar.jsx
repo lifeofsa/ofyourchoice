@@ -36,23 +36,25 @@ const Navbar = () => {
     dispatch(userLogoutAction());
   };
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const Links = [
     {
       name: "Home",
-      to: "/",
+      href: "/",
     },
     {
       name: "Global News",
-      to: "/topnews",
+      href: "/topnews",
     },
     {
       name: "Domestic News",
-      to: "/domesticnews",
+      href: "/domesticnews",
     },
   ];
-  const NavLink = ({ children }) => (
+  const NavLink = ({ href, children }) => (
     <Link
+      href={href}
+      onClick={onClose}
       px={2}
       py={1}
       rounded={"md"}
@@ -87,37 +89,45 @@ const Navbar = () => {
             <HStack as="nav" spacing={4} display={{ base: "none", lg: "flex" }}>
               {Links.map((link) => (
                 // <NavLink key={link}>
-                <LinkReact to={link.to}>
-                  <NavLink key={link.name}>{link.name}</NavLink>
-                </LinkReact>
+
+                <NavLink href={link.href} key={link.name}>
+                  {link.name}
+                </NavLink>
+
                 // {/* </NavLink> */}
               ))}
             </HStack>
           </HStack>
 
           <Flex gap={1}>
-            {userInfo ? (
-              <Menu isLazy>
-                <MenuButton fontSize="18" py={1} px={5}>
-                  {`Welcome ${userInfo.name}`} <ChevronDownIcon />
-                </MenuButton>
-                <MenuList>
-                  <a href="/bloglist">
-                    <MenuItem> Blogs List </MenuItem>
-                  </a>
-                  <MenuItem onClick={() => logoutHandler()}> Logout </MenuItem>
-                </MenuList>
-              </Menu>
-            ) : (
-              <ButtonGroup px={5}>
-                <LinkReact to="/login">
-                  <Button>Login</Button>
-                </LinkReact>
-                <LinkReact to="/register">
-                  <Button>Register</Button>
-                </LinkReact>
-              </ButtonGroup>
-            )}
+            {
+              userInfo && (
+                <Menu isLazy>
+                  <MenuButton fontSize="18" py={1} px={5}>
+                    {`Welcome ${userInfo.name}`} <ChevronDownIcon />
+                  </MenuButton>
+                  <MenuList>
+                    <a href="/bloglist">
+                      <MenuItem> Blogs List </MenuItem>
+                    </a>
+                    <MenuItem onClick={() => logoutHandler()}>
+                      {" "}
+                      Logout{" "}
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              )
+              //  : (
+              //   <ButtonGroup px={5}>
+              //     <a href="/login">
+              //       <Button>Login</Button>
+              //     </a>
+              //     <a href="/register">
+              //       <Button>Register</Button>
+              //     </a>
+              //   </ButtonGroup>
+              // )
+            }
 
             <Button onClick={toggleColorMode}>
               {colorMode == "light" ? <MoonIcon color="black" /> : <SunIcon />}
@@ -128,9 +138,11 @@ const Navbar = () => {
           <Box pb={4} display={{ lg: "none" }}>
             <Stack as="nav" spacing={4}>
               {Links.map((link) => (
-                <LinkReact to={link.to}>
-                  <NavLink key={link}>{link.name}</NavLink>
-                </LinkReact>
+                // <a onClick={onClose} href={link.href}>
+                <NavLink href={link.href} key={link}>
+                  {link.name}
+                </NavLink>
+                // </a>
               ))}
             </Stack>
           </Box>
