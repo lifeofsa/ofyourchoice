@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { blogGetByIdAction } from "../actions/blogsAction";
@@ -32,6 +33,10 @@ const SingleBlogScreen = () => {
         </Stack>
       ) : (
         <Stack py={50} align="center">
+          <Helmet>
+            <title>{blog?.title}</title>
+            <meta name="description" content={blog?.description} />
+          </Helmet>
           <Center>
             <Text fontWeight="bold" textColor="#aeacac">
               {dayjs(blog?.createdAt).format("MMM DD, YYYY")}
