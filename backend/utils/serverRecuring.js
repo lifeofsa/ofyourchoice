@@ -2,7 +2,7 @@ const schedule = require("node-schedule");
 const axios = require("axios");
 
 // List of websites to fetch data from
-const websites = "https://ofyourchoice.net";
+const websites = "https://lifeofabblogs.onrender.com";
 
 const fetchWebsiteData = async (website) => {
   try {
