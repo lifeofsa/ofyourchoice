@@ -2,22 +2,14 @@ const schedule = require("node-schedule");
 const axios = require("axios");
 
 // List of websites to fetch data from
-const websites = "https://lifeofabblogs.onrender.com";
-
-const fetchWebsiteData = async (website) => {
-  try {
-    const response = await axios.get(website);
-    // Process the fetched data here
-    console.log(`Fetched data from ${website}`);
-    console.log(response.data);
-  } catch (error) {
-    console.error(`Error fetching data from ${website}:`, error.message);
-  }
-};
-
 const scheduleTask = () => {
-  schedule.scheduleJob("*/10 * * * *", async function () {
-    await fetchWebsiteData(websites);
+  schedule.scheduleJob("*/2 * * * *", async function () {
+    try {
+      const response = await axios.get("https://lifeofabblogs.onrender.com");
+      console.log("Response", response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
   });
 };
 
