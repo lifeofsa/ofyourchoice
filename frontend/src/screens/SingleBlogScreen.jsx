@@ -49,14 +49,22 @@ const SingleBlogScreen = () => {
           <Box position="relative">
             <Image className="imgg" src={blog?.image} />
             <Container fontSize="17" maxW={700} py={50}>
-              <Text>{blog?.description}</Text>
+              {blog?.description?.split("\n")?.map((str) => (
+                <Text>
+                  {str} <br />
+                </Text>
+              ))}
             </Container>
             {blog?.extra?.map((ex) => (
               <Container maxW={700} py={5}>
                 <Text fontSize="2xl" fontWeight="bold">
                   {ex.subHeading}
                 </Text>
-                <Text py={2}>{ex.content}</Text>
+                {ex?.content.split("\n").map((str) => (
+                  <Text>
+                    {str} <br />{" "}
+                  </Text>
+                ))}
                 <Image py={5} src={ex.image} />
               </Container>
             ))}
