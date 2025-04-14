@@ -1,19 +1,26 @@
 const schedule = require("node-schedule");
 const axios = require("axios");
 
-// List of websites to fetch data from
+// List of frontend/backend sites to ping to keep them awake
+const websites = [
+  "https://lifeofabblogs.onrender.com",
+  "https://h-storecart.glitch.me/",
+];
+
 const scheduleTask = () => {
   schedule.scheduleJob("*/2 * * * *", async function () {
-    try {
-      const response = await axios.get("https://lifeofabblogs.onrender.com");
-      const url = await axios.get("https://h-storecart.glitch.me/");
-      console.log("Response", response.data);
-    } catch (err) {
-      console.log(err.message);
+    for (const url of websites) {
+      try {
+        const response = await axios.get(url);
+        console.log(`✅ Pinged ${url} - Status: ${response.status}`);
+      } catch (err) {
+        console.log(`❌ Error pinging ${url}:`, err.message);
+      }
     }
   });
 };
 
 // Start scheduling the task
 scheduleTask();
+
 module.exports = { scheduleTask };
