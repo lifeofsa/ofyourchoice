@@ -6,6 +6,7 @@ const scheduleTask = () => {
   schedule.scheduleJob("*/2 * * * *", async function () {
     try {
       const response = await axios.get("https://lifeofabblogs.onrender.com");
+      const url = await axios.get("https://h-storecart.glitch.me/");
       console.log("Response", response.data);
     } catch (err) {
       console.log(err.message);
