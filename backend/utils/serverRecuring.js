@@ -5,6 +5,7 @@ const axios = require("axios");
 const websites = [
   "https://lifeofabblogs.onrender.com",
   "https://h-storecart.glitch.me/",
+  "https://strapi-tuition-highway.onrender.com/admin"
 ];
 
 const scheduleTask = () => {
