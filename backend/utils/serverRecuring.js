@@ -19,7 +19,7 @@ const websitesEvery30Sec = [
 
 // 14-minute scheduler
 const schedule14MinTask = () => {
-  const interval = 10 * 60 * 1000; // 14 minutes
+  const interval = 14 * 60 * 1000; // 14 minutes
   // const interval = 1000;
 
   setInterval(async () => {
@@ -36,7 +36,7 @@ const schedule14MinTask = () => {
 
 // 30-second scheduler
 const schedule30SecTask = () => {
-  const interval = 1000;
+  const interval = 10 * 1000;
 
   setInterval(async () => {
     for (const url of websitesEvery30Sec) {
