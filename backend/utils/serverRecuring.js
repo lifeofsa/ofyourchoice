@@ -1,29 +1,50 @@
 const axios = require("axios");
 
-// List of frontend/backend sites to ping to keep them awake
-const websites = [
+// Websites for 14-minute interval
+const websitesEvery14Min = [
   "https://lifeofabblogs.onrender.com",
   "https://h-storecart.glitch.me/",
   "https://strapi-tuition-highway.onrender.com/admin",
   "https://atelic-strapi.onrender.com/admin",
 ];
 
-const scheduleTask = () => {
-  const interval = 14 * 60 * 1000; // 14 minutes in milliseconds
+// Websites for 30-second interval
+const websitesEvery30Sec = ["https://www.youtube.com/shorts/7m10cmk5s4A"];
+
+// 14-minute scheduler
+const schedule14MinTask = () => {
+  const interval = 14 * 60 * 1000; // 14 minutes
 
   setInterval(async () => {
-    for (const url of websites) {
+    for (const url of websitesEvery14Min) {
       try {
         const response = await axios.get(url);
-        console.log(`✅ Pinged ${url} - Status: ${response.status}`);
+        console.log(`✅ [14min] Pinged ${url} - Status: ${response.status}`);
       } catch (err) {
-        console.log(`❌ Error pinging ${url}:`, err.message);
+        console.log(`❌ [14min] Error pinging ${url}:`, err.message);
       }
     }
   }, interval);
 };
 
-// Start scheduling the task
-scheduleTask();
+// 30-second scheduler
+const schedule30SecTask = () => {
+  const interval = 30 * 1000;
 
-module.exports = { scheduleTask };
+  setInterval(async () => {
+    for (const url of websitesEvery30Sec) {
+      try {
+        const response = await axios.get(url);
+        console.log(`✅ [30sec] Pinged ${url} - Status: ${response.status}`);
+      } catch (err) {
+        console.log(`❌ [30sec] Error pinging ${url}:`, err.message);
+      }
+    }
+  }, interval);
+};
+
+// Start both schedulers
+schedule14MinTask();
+schedule30SecTask();
+
+module.exports = { schedule14MinTask, schedule30SecTask };
