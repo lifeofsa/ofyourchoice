@@ -3,9 +3,8 @@ const axios = require("axios");
 // Websites for 14-minute interval
 const websitesEvery14Min = [
   "https://lifeofabblogs.onrender.com",
-  "https://h-storecart.glitch.me/",
-  "https://strapi-tuition-highway.onrender.com/admin",
   "https://atelic-strapi.onrender.com/admin",
+  "https://strapi-tuition-highway.onrender.com/admin",
 ];
 
 // Websites for 30-second interval
@@ -20,7 +19,8 @@ const websitesEvery30Sec = [
 
 // 14-minute scheduler
 const schedule14MinTask = () => {
-  const interval = 14 * 60 * 1000; // 14 minutes
+  // const interval = 14 * 60 * 1000; // 14 minutes
+  const interval = 1000;
 
   setInterval(async () => {
     for (const url of websitesEvery14Min) {
