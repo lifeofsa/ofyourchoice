@@ -9,7 +9,14 @@ const websitesEvery14Min = [
 ];
 
 // Websites for 30-second interval
-const websitesEvery30Sec = ["https://www.youtube.com/shorts/7m10cmk5s4A"];
+const websitesEvery30Sec = [
+  "https://www.youtube.com/shorts/7m10cmk5s4A",
+  "https://www.youtube.com/shorts/Hlgama5QU5Q",
+  "https://www.youtube.com/shorts/KxIohWpKA5M",
+  "https://www.youtube.com/shorts/4zsCqD-c2C4",
+  "https://www.youtube.com/shorts/_tw8zSsCbu8",
+  "https://www.youtube.com/shorts/Ef7Ao6yv5mE",
+];
 
 // 14-minute scheduler
 const schedule14MinTask = () => {
@@ -29,7 +36,7 @@ const schedule14MinTask = () => {
 
 // 30-second scheduler
 const schedule30SecTask = () => {
-  const interval = 30 * 1000;
+  const interval = 1000;
 
   setInterval(async () => {
     for (const url of websitesEvery30Sec) {
