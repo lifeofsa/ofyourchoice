@@ -1,14 +1,13 @@
 const axios = require("axios");
-const puppeteer = require("puppeteer");
 
-// Websites for 14-minute interval (ping)
+// Websites for 14-minute interval
 const websitesEvery14Min = [
   "https://lifeofabblogs.onrender.com",
   "https://atelic-strapi.onrender.com/admin",
   "https://strapi-tuition-highway.onrender.com/admin",
 ];
 
-// Websites for 30-second interval (headless render)
+// Websites for 30-second interval
 const websitesEvery30Sec = [
   "https://www.youtube.com/shorts/7m10cmk5s4A",
   "https://www.youtube.com/shorts/Hlgama5QU5Q",
@@ -18,9 +17,11 @@ const websitesEvery30Sec = [
   "https://www.youtube.com/shorts/Ef7Ao6yv5mE",
 ];
 
-// Ping every 14 minutes
-function schedule14MinTask() {
-  const interval = 14 * 60 * 1000;
+// 14-minute scheduler
+const schedule14MinTask = () => {
+  const interval = 14 * 60 * 1000; // 14 minutes
+  // const interval = 1000;
+
   setInterval(async () => {
     for (const url of websitesEvery14Min) {
       try {
@@ -31,31 +32,26 @@ function schedule14MinTask() {
       }
     }
   }, interval);
-}
+};
 
-// Load YouTube every 30 seconds
-async function schedule30SecTask() {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-
-  const page = await browser.newPage();
-  let currentIndex = 0;
+// 30-second scheduler
+const schedule30SecTask = () => {
+  const interval = 10 * 1000;
 
   setInterval(async () => {
-    const url = websitesEvery30Sec[currentIndex];
-    try {
-      await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
-      console.log(`🌐 [10sec] Loaded: ${url}`);
-    } catch (err) {
-      console.log(`❌ [10sec] Failed to load ${url}: ${err.message}`);
+    for (const url of websitesEvery30Sec) {
+      try {
+        const response = await axios.get(url);
+        console.log(`✅ [30sec] Pinged ${url} - Status: ${response.status}`);
+      } catch (err) {
+        console.log(`❌ [30sec] Error pinging ${url}:`, err.message);
+      }
     }
-    currentIndex = (currentIndex + 1) % websitesEvery30Sec.length;
-  }, 10 * 1000);
-}
-
-module.exports = {
-  schedule14MinTask,
-  schedule30SecTask,
+  }, interval);
 };
+
+// Start both schedulers
+schedule14MinTask();
+schedule30SecTask();
+
+module.exports = { schedule14MinTask, schedule30SecTask };
